@@ -1,10 +1,11 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./Navbar";
+import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
-import Body from "./Body";
-import Login from "./Login";
-import Profile from "./Profile";
+import Body from "./components/Body";
+import Login from "./components/Login";
+import Profile from "./components/Profile";
+import Feed from "./components/Feed";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         {/* parent route */}
         <Route path="/" element={<Body/>}>
           {/* child routes */}
+          <Route path="/" element={<Feed/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/login" element={<Login />} />
         </Route>
