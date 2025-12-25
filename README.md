@@ -25,4 +25,9 @@ frontend setup
 
 FLOW \_ configureStore -> provider to app -> create slice -> used reducder in store
 
+// Episode 2.17
 -- once we login we use redux devtool extention and check store
+-- once we login if we refresh we lost user data user name , photo because our redux gets empty how to resolve this -- inside body we make API call to profile/view Api to get user
+-- profile/edit
+
+// Episode 2.18

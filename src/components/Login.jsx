@@ -6,8 +6,9 @@ import { useNavigate } from "react-router";
 import { baseURL } from "../utils/constents";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("asif@gmail.com");
+  const [password, setPassword] = useState("Asif@123");
+  const [error,setError]=useState()
   const dispatch = useDispatch();
   const navigation = useNavigate();
 
@@ -22,10 +23,10 @@ const Login = () => {
         },
         { withCredentials: true } //this sets token in cookie
       );
-      console.log("Login successful:", result.data);
       dispatch(addUser(result.data));
       navigation("/");
     } catch (error) {
+      setError(error?.response?.data || " something went wrong")
       console.error("Login error:", error);
     }
   };
@@ -44,12 +45,13 @@ const Login = () => {
 
           <input
             type="password"
-            placeholder="Password"
+            // placeholder="Password"
             value={password}
             className="input input-bordered w-full max-w-xs my-2 !text-black placeholder:text-black"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        <p className="text-red-500">{error}</p>
         <div className="justify-end card-actions">
           <button
             className="btn !text-black "

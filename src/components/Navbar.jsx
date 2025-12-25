@@ -1,30 +1,35 @@
 import axios from "axios";
-import { useNavigate } from "react-router";
-import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
 import { baseURL } from "../utils/constents";
+import { removeUser } from "../utils/userSlice";
 
 const Navbar = () => {
   const userDetails = useSelector((store) => store.user);
   const navigate = useNavigate();
-  const handelLogout = async(e) => {
-    e.preventDefault();
+  const dispatch = useDispatch()
+  const handleLogout = async () => {
+    // e.preventDefault();
     try {
-       const res = await axios.post(`${baseURL}/logout`, {}, { withCredentials: true });
-       if(res.status === 200){
+      const res = await axios.post(
+        `${baseURL}/logout`,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeUser())
         navigate("/login");
-        window.location.reload();
-       }
-      
-       
-        console.log("Logout successful:", res);
+
+
+      console.log("Logout successful:", res);
     } catch (error) {
-       console.error("Logout error:", error);
+      console.error("Logout error:", error);
     }
-  }
+  };
   return (
     <div className="navbar bg-primary text-primary-content shadow-sm">
       <div className="flex-1">
-        <a
+        <Link
+          to="/"
           className="btn btn-ghost  text-xl font-bold
 "
         >
@@ -34,14 +39,15 @@ const Navbar = () => {
               className="w-8 h-8 object-contain"
             /> */}
           DevTinder
-        </a>
+        </Link>
       </div>
       <div className="flex items-center gap-3">
         {userDetails && (
           <>
             {/* Welcome text */}
-            <p className="hidden sm:block text-sm font-medium">
-              Welcome, <span className="font-semibold">{userDetails.firstName}</span>
+            <p className=" sm:block text-sm font-medium">
+              Welcome!{" "}
+              <span className="font-semibold">{userDetails?.firstName}</span>
             </p>
 
             {/* Avatar dropdown */}
@@ -52,7 +58,7 @@ const Navbar = () => {
                 className="btn btn-ghost btn-circle avatar border border-gray-300"
               >
                 <div className="w-10 rounded-full">
-                  <img alt="user-profile" src={userDetails.photoUrl} />
+                  <img alt="user-profile" src={userDetails?.photoUrl} />
                 </div>
               </div>
 
@@ -61,16 +67,16 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow bg-primary text-primary-content"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link to="/profile" className="justify-between">
                     Profile
                     <span className="badge">New</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a>Settings</a>
                 </li>
                 <li>
-                  <a onClick={handelLogout}>Logout</a>
+                  <a onClick={handleLogout}>Logout</a>
                 </li>
               </ul>
             </div>
