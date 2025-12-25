@@ -7,14 +7,11 @@ import UserCard from "./userCard";
 
 const Feed = () => {
   const dispatch = useDispatch();
-  const feedData = useSelector((store)=>store.feed)
+  const feedData = useSelector((store) => store.feed);
   const fetchUsers = async () => {
-    if(feedData) return
+    if (feedData) return;
     try {
-      const res = await axios.get(
-        baseURL + "/feed",
-        { withCredentials: true }
-      );
+      const res = await axios.get(baseURL + "/feed", { withCredentials: true });
       dispatch(getFeedSuccess(res.data.data));
     } catch (error) {
       console.log(error.message);
@@ -24,13 +21,19 @@ const Feed = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
-  return <>
- <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 my-10 px-6">
-    {feedData?.map((ele) => (
-      <UserCard key={ele.id} user={ele} />
-    ))}
-  </div>
-  </>
+
+  if (!feedData) return;
+  if (feedData.length === 0)
+    return <div className="justify-center my-10">No New Users Data</div>;
+  return (
+    <>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 my-10 px-6">
+        {feedData?.map((ele) => (
+          <UserCard key={ele.id} user={ele} />
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default Feed;

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { baseURL } from "../utils/constents";
 import { removeUser } from "../utils/userSlice";
+import { clearFeed } from "../utils/feedSlice";
 
 const Navbar = () => {
   const userDetails = useSelector((store) => store.user);
@@ -17,9 +18,8 @@ const Navbar = () => {
         { withCredentials: true }
       );
       dispatch(removeUser())
+      dispatch(clearFeed())
         navigate("/login");
-
-
       console.log("Logout successful:", res);
     } catch (error) {
       console.error("Logout error:", error);
@@ -73,7 +73,10 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link to="/connections">Connections</Link>
+                </li>
+                 <li>
+                  <Link to="/requests">Requests</Link>
                 </li>
                 <li>
                   <a onClick={handleLogout}>Logout</a>

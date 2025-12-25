@@ -1,6 +1,6 @@
 # React + Vite
 
-// Episode 2.15
+// 🔥🔥🔥🔥🔥🔥Episode 2.15🔥🔥🔥🔥🔥🔥
 frontend setup
 
 1. create a vite + React application
@@ -9,7 +9,7 @@ frontend setup
 4. creating compoenents files
 5. don routing parent and child routing and using Outlet for dispalying
 
-// Episode 2.16
+// 🔥🔥🔥🔥🔥🔥Episode 2.16🔥🔥🔥🔥🔥🔥
 
 1. create login component
    -- CORS- cross origin resource schearing - means we make api call having different domain eg frontend localhost:5173 but backend api is running on localhost:3000 so brower does not allow it through CORS error
@@ -25,9 +25,15 @@ frontend setup
 
 FLOW \_ configureStore -> provider to app -> create slice -> used reducder in store
 
-// Episode 2.17
+// 🔥🔥🔥🔥🔥🔥Episode 2.17 🔥🔥🔥🔥🔥🔥
 -- once we login we use redux devtool extention and check store
 -- once we login if we refresh we lost user data user name , photo because our redux gets empty how to resolve this -- inside body we make API call to profile/view Api to get user
 -- profile/edit
 
-// Episode 2.18
+🔥🔥🔥🔥🔥🔥 Episode 2.18 🔥🔥🔥🔥🔥🔥
+-- existing connections -all my connections connection page
+-- requested received
+-- accept-reject request
+
+// 🔥🔥🔥🔥🔥🔥Episode 2.19 🔥🔥🔥🔥🔥🔥
+-- intrested-ignored
