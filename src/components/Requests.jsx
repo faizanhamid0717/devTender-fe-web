@@ -54,20 +54,20 @@ const Requests = () => {
               <img
                 alt="photo"
                 src={photoUrl}
-                className="w-20 h-20 rounded-full"
+                className="w-35 h-23 rounded-full"
               />
             </div>
             <div className="text-left mx-4">
               <h2 className="font-bold text-xl">
                 {firstName + " " + lastName}
               </h2>
-              {age && gender && <p>{age + "," + gender}</p>}
+              {age && gender && <p className="badge badge-secondary">{age + " , " + gender}</p>}
               <p>{about}</p>
             </div>
 
             <div>
-              <button className="btn btn-primary mx-2" onClick={()=>reviewRequest('rejected',ele._id)}>Reject</button>
-              <button className="btn btn-secondary mx-2" onClick={()=>reviewRequest('accepted',ele?._id)}>Accept</button>
+              <button className="btn btn-primary mx-2 my-1 w-20" onClick={()=>reviewRequest('rejected',ele._id)}>Reject</button>
+              <button className="btn btn-secondary mx-2 my-1 w-20" onClick={()=>reviewRequest('accepted',ele?._id)}>Accept</button>
             </div>
           </div>
         );

@@ -37,3 +37,20 @@ FLOW \_ configureStore -> provider to app -> create slice -> used reducder in st
 
 // 🔥🔥🔥🔥🔥🔥Episode 2.19 🔥🔥🔥🔥🔥🔥
 -- intrested-ignored
+
+// 🔥🔥🔥🔥🔥🔥Episode 3.1 🔥🔥🔥🔥🔥🔥
+deployment
+we use AWS create our own server and deployment
+https://aws.amazon.com/console/
+-- how we deploy app manually on server
+-- 🔥🔥 STEPS 🔥🔥
+
+1. Create account
+2. deployment FE and BE
+
+// 🔥🔥🔥🔥🔥🔥Episode 3.2 🔥🔥🔥🔥🔥🔥
+
+Backend deployment on aws
+
+// 🔥🔥🔥🔥🔥🔥Episode 3.3 🔥🔥🔥🔥🔥🔥
+razorpay integration

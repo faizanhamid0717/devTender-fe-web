@@ -25,15 +25,17 @@ const Feed = () => {
   if (!feedData) return;
   if (feedData.length === 0)
     return <div className="justify-center my-10">No New Users Data</div>;
-  return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 my-10 px-6">
-        {feedData?.map((ele) => (
-          <UserCard key={ele.id} user={ele} />
-        ))}
-      </div>
-    </>
-  );
+return (
+  <div className="relative w-full h-[520px] flex justify-center items-center my-20">
+    {feedData?.slice(0, 1).map((ele, index) => (
+      <UserCard
+        key={ele._id}
+        user={ele}
+        index={index}
+      />
+    ))}
+  </div>
+);
 };
 
 export default Feed;

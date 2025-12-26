@@ -36,20 +36,20 @@ const Connections = () => {
         return (
           <div
             key={ele.id}
-            className="flex m-4 p-4 rounded-lg w-1/3 mx-auto border-1 bg-base-300"
+            className="flex m-4 p-4 rounded-lg w-1/2 mx-auto border-1 bg-base-300"
           >
             <div>
               <img
                 alt="photo"
                 src={photoUrl}
-                className="w-20 h-20 rounded-full"
+                className="w-35 h-23 rounded-full"
               />
             </div>
             <div className="text-left mx-4">
               <h2 className="font-bold text-xl">
                 {firstName + " " + lastName}
               </h2>
-              {age && gender && <p>{age + "," + gender}</p>}
+              {age && gender && <p className="badge badge-secondary">{age + " , " + gender}</p>}
               <p>{about}</p>
             </div>
           </div>

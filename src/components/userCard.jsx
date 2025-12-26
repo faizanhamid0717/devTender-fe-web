@@ -3,16 +3,19 @@ import { baseURL } from "../utils/constents";
 import axios from "axios";
 import { removeUserFromFeed } from "../utils/feedSlice";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router";
 
 const UserCard = ({ user }) => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const toShow = location.pathname !== "/profile";
   const { _id, firstName, lastName, age, photoUrl, about, gender } = user;
   const handleSendRequest = async (status, _id) => {
     try {
       const res = await axios.post(
         baseURL + "/request/send/" + status + "/" + _id,
         {},
-        { withCredentials: true, }
+        { withCredentials: true }
       );
       console.log(res);
       dispatch(removeUserFromFeed(_id));
@@ -20,7 +23,6 @@ const UserCard = ({ user }) => {
       console.log(error);
     }
   };
-
 
   return (
     <div className="card bg-base-200 w-75 shadow-sm">
@@ -39,20 +41,22 @@ const UserCard = ({ user }) => {
           {gender && <div className="badge badge-secondary">{gender}</div>}
         </h2>
         <p>{about}</p>
-        <div className="card-actions justify-end my-4">
-          <button
-            className=" btn btn-primary"
-            onClick={() => handleSendRequest("ignored", _id)}
-          >
-            Ignored
-          </button>
-          <button
-            className=" btn btn-secondary"
-            onClick={() => handleSendRequest("intrested", _id)}
-          >
-            Intrested
-          </button>
-        </div>
+        {toShow && (
+          <div className="card-actions justify-end my-4">
+            <button
+              className=" btn btn-primary"
+              onClick={() => handleSendRequest("ignored", _id)}
+            >
+              Ignored
+            </button>
+            <button
+              className=" btn btn-secondary"
+              onClick={() => handleSendRequest("intrested", _id)}
+            >
+              Intrested
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
