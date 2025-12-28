@@ -10,6 +10,7 @@ import Connections from "./components/connections";
 import Requests from "./components/Requests";
 import Premium from "./components/Premium";
 import Chat from "./components/Chat";
+// git hub repo devTinder frontend akshi sani https://github.com/akshaymarch7/devTinder-web
 
 function App() {
   return (
